@@ -1,6 +1,7 @@
 %{
 #include <stdio.h>
-#include "tokens.hpp"
+#include "output.hpp"
+#include "parser.tab.hpp"
 %}
 
 %option yylineno
@@ -33,13 +34,13 @@ continue return CONTINUE;
 \{       return LBRACE;
 \}       return RBRACE;
 =        return ASSIGN;
-==|!=|<|>|<=|>= return RELOP;
-\+|-|\*|\/      return BINOP;
-\/\/[^\r\n]*    return COMMENT;
+==|!=    return EQUALITY;
+\<|>|<=|>= return RELATION;
+\+|- return BINADD;
+\*|\/ return BINMUL;
 {letter}+({letter}|{digit})* return ID;
 ([1-9]{digit}*)|0  return NUM;
 \"([\x23-\x5B\x5D-\x7E]|\\[\x20-\x21\x23-\x5B\x5D-\x7E]|\x20|\x21|(\\\\)*\\\"|\\\\)*\" return STRING;
-\"[^\"\n\r]*\n|\r  return UNCLOSED;
 {ws} {};
-. return UNDEF;
+\/\/[^\r\n]*[ \r|\n|\r\n]? {};
 %%
