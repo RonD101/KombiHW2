@@ -16,6 +16,7 @@ int      return INT;
 byte     return BYTE;
 b        return B;
 bool     return BOOL;
+const    return CONST;
 and      return AND;
 or       return OR;
 not      return NOT;
@@ -43,4 +44,5 @@ continue return CONTINUE;
 \"([\x23-\x5B\x5D-\x7E]|\\[\x20-\x21\x23-\x5B\x5D-\x7E]|\x20|\x21|(\\\\)*\\\"|\\\\)*\" return STRING;
 {ws} {};
 \/\/[^\r\n]*[ \r|\n|\r\n]? {};
+.        { output::errorLex(yylineno); };
 %%
