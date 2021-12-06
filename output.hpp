@@ -2,6 +2,10 @@
 #define _236360_2_
 
 #include <string>
+extern char* yytext;
+extern int yylineno;
+extern int yyleng;
+extern int yylex();
 
 #define YYSTYPE int
 
