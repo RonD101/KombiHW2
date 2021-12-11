@@ -24,17 +24,17 @@
 %token    NUM
 %token    STRING
 %right    ASSIGN
-%right    NOT
-%left     AND
 %left     OR
-%left     LPAREN
-%left     RPAREN
-%left     LBRACE
-%left     RBRACE
+%left     AND
 %left     EQUALITY
+%nonassoc RELATION
 %left     BINADD
 %left     BINMUL
-%nonassoc RELATION
+%right    NOT
+%left     LBRACE
+%left     RBRACE
+%left     LPAREN
+%left     RPAREN
 %nonassoc ELSE
 
 %%

@@ -43,6 +43,7 @@ continue                      return CONTINUE;
 ([1-9]{digit}*)|0             return NUM;
 \"([^\n\r\"\\]|\\[rnt"\\])+\" return STRING;
 {ws}                          {};
+(\r)|(\r\n) {};
 \/\/[^\r\n]*[ \r|\n|\r\n]?    {};
 .                             { output::errorLex(yylineno); };
 %%
